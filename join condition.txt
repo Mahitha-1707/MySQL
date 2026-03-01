@@ -1,0 +1,25 @@
+use ass1;
+create table person(
+    pid int primary key,
+    name varchar(50),
+    age int
+);
+create table profession(
+    prof_id int primary key,
+    profession varchar(50),
+    pid int
+);
+insert into person (pid, name, age) values
+(1, 'shewag', 39),
+(2, 'modi', 40),
+(3, 'babu', 29),
+(4, 'maiik', 30);
+insert into profession (prof_id, profession, pid) values
+(1, 'crickter', 1),
+(3, 'teacher', 4),
+(4, 'politician', 2),
+(5, 'engineer', 3),
+(6, 'doctor', 10);
+select pf.prof_id,pf.profession,pf.pid,p.pid as person_pid,p.name,p.age from profession pf left join person p on pf.pid = p.pid;
+select pf.prof_id,pf.profession,pf.pid,p.pid as person_pid,p.name,p.age from profession pf right outer join person p on pf.pid = p.pid;
+select pf.prof_id,pf.profession,pf.pid,p.pid as person_pid,p.name,p.age from profession pf cross join person p;
