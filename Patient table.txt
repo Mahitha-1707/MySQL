@@ -1,0 +1,50 @@
+use ass1;
+create table patients(
+pid INT,
+    fname VARCHAR(50),
+    lname VARCHAR(50),
+    age INT,
+    bg VARCHAR(10)
+    );
+INSERT INTO patients(pid, fname, lname, age, bg) VALUES
+(1, 'madhava', 'reddy', 45, 'o+ve'),
+(2, 'abhinav', 'bandra', 45, 'o-ve'),
+(4, 'hari', 'kiran', 60, 'b-ve'),
+(3, 'madhava', 'kiran', 52, 'o+ve'),
+(5, 'veena', 'kumari', 42, NULL),
+(6, 'k_iran', 'kumar', 39, 'b-ve'),
+(2, 'abhinav', 'bandra', 45, 'o-ve'),
+(7, 'mahes%h', 'nambootri', 36, 'b+ve'),
+(8, 'rahul', 'kumar', 46, 'b-ve'),
+(9, 'bharat', 'kumar', 56, 'b-ve');
+select concat(fname,lname) as 'fullname',age from patients order by age desc;
+select fname,lname,bg from patients order by bg desc;
+select fname,lname,pid from patients order by lname,fname desc;
+select fname,age from patients order by concat('Hello'+fname+lname) desc;
+select distinct fname,age from patients;
+select distinct age,bg from patients;
+select distinct fname,age,bg from patients order by bg desc;
+select fname,lname,age from patients limit 3;
+select distinct fname,age from patients order by age desc limit 6;
+select * from patients where age>45;
+select * from patients where age between 40 and 50; 
+select * from patients where age>=40 and age<=50;
+select * from patients where age>40 and bg!='o+ve';
+select * from patients where bg is not null;
+select * from patients where age=42 or age=36 or age=60;
+select * from patients where age in (42,36,60);
+select * from patients where fname like 'm%';
+select * from patients where lname like '%i';
+select * from patients where fname like '%a_';
+select * from patients where fname like '%r__';
+select * from patients where fname like '%a%';
+select bg, count(*) as 'count' from patients group by bg;
+select max(age) as  'max age',bg from patients group by bg;
+select lname,MIN(age) from patients group by bg,lname;
+select bg,MAX(age) as 'max age' from patients group by bg having MAX(age)>40;
+select p1.* from patients p1 where 3=( select count(distinct(p2.pid)) from patients p2 where p2.age>p1.age);
+select fname from patients where age = (select MIN(age) from patients);
+select count(age) as 'tot rows' ,max(age) as 'max age' from patients where age>45;
+select bg, count(*) as 'count' from patients group by bg;
+SELECT bg, MAX(age) AS 'max age' FROM patients GROUP BY bg HAVING MAX(age) > 40;
+

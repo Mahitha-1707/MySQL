@@ -1,0 +1,32 @@
+Example Lab Query
+
+create database day1;
+use day1;
+create table product(
+pid int,
+pname varchar(40),
+cost int,
+man_name varchar(40),
+man_date date
+);
+insert into product values(1,"lux",34,"HUL","2017-12-12");
+insert into product values(1,"locks",1200,"Godrej","2018-11-01");
+select * FROM product;
+
+---------------------------------------------------------------------------------
+Example Lab Query
+
+create database ass1;
+use ass1;
+create table employee(
+eid int primary key,
+name varchar(40) not null,
+salary int,
+bg varchar(10) default "o+ve",
+age int check(age between 18 and 60),
+email varchar(40) unique
+);
+insert into employee values(4,"ravi",36000,"o+ve",48,"ravi@gmail.com");
+insert into employee values(6,"suresh",38000,"o+ve",56,null);
+select * from employee;
+---------------------------------------------------------------------------------------
